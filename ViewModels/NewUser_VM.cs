@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using System;
+using System.Windows.Input;
+using TestFromDeeplayCompany.Commands;
+using TestFromDeeplayCompany.Data;
 using TestFromDeeplayCompany.Models;
 using TestFromDeeplayCompany.Services;
 using TestFromDeeplayCompany.Services.Interfaces;
@@ -43,11 +47,11 @@ namespace TestFromDeeplayCompany.ViewModels
         // Дата рождения
         public DateTime UserBirthday { get; set; } = DateTime.Now;
         // Домашний адрес
-        private string _adress;
-        public string Adress
+        private string _address;
+        public string Address
         {
-            get { return _adress; }
-            set => Set(ref _adress, value);
+            get { return _address; }
+            set => Set(ref _address, value);
         }
 
         // Телефон
@@ -69,13 +73,49 @@ namespace TestFromDeeplayCompany.ViewModels
 
         #endregion
 
+        #region Команда добавления нового сотрудника
+        public ICommand AddNewEmployeeCmd { get; }
+        private bool CanAddNewEmployeeCmdExecute(object p) => true;
+        private void OnAddNewEmployeeCmdExecuted(object p)
+        {
+            AddNewProfile();
+        }
+
+        #endregion
 
 
         // Конструктор
         public NewUser_VM()
         {
+            AddNewEmployeeCmd = new LamdaCommand(OnAddNewEmployeeCmdExecuted, CanAddNewEmployeeCmdExecute);
             IDownloadPostFromDb.ShowPost(Collections.Posts);
             IDownloadDepartament.ShowDepartament(Collections.Departaments);
         }
+
+        #region Методы
+        private void AddNewProfile()
+        {
+            
+            string surname = "'" + Surname + "', ";
+            string name = "'" + Name + "', " ;
+            string middleName = "'" + MiddleName + "', ";
+            string birthday = "'" + UserBirthday.ToShortDateString() + "', ";
+            string address = "'" + Address + "', ";
+            string phoneNumber = "'" + Phone + "')";
+            string sqlQueryAddProfile2Db = "INSERT INTO Profile VALUES (NULL, " + surname + name + middleName + birthday + address + phoneNumber;
+
+            Connection2db connection = new Connection2db();
+            connection.OpenConnection();
+            SqliteCommand cmdInsertNewProfile = new(sqlQueryAddProfile2Db, connection.GetConnection());
+            cmdInsertNewProfile.ExecuteNonQuery();
+            connection.CloseConnection();
+        }
+
+        private void AddNewEmployee()
+        {
+
+        }
+
+        #endregion
     }
 }

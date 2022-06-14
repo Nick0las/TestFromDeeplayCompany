@@ -164,7 +164,7 @@
                      FontSize="16"
                      Foreground="DarkBlue"
                      FontFamily="Arial"
-                     Text="{Binding Adress}"/>
+                     Text="{Binding Address}"/>
             <TextBlock Grid.Row="3"
                        Grid.Column="0"
                        Text="Номер телефона:"

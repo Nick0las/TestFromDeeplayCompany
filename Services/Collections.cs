@@ -17,7 +17,8 @@ namespace TestFromDeeplayCompany.Services
         
         // Коллекция, хранящая данные о всех сотрудниках
         public static ObservableCollection<Employee> Employees { get; set; } = new ObservableCollection<Employee>();
-        
 
+        // Коллекция, хранящая данные о уникальной информации должностей
+        public static ObservableCollection<InfoPost> InfoPosts { get; set; } = new ObservableCollection<InfoPost>();
     }
 }
