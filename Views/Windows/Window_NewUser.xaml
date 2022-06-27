@@ -7,7 +7,7 @@
         xmlns:serv="clr-namespace:TestFromDeeplayCompany.Services"
         xmlns:vm="clr-namespace:TestFromDeeplayCompany.ViewModels"
         xmlns:fa="http://schemas.fontawesome.com/icons/"
-        Title="{Binding Tittle}" Height="450" Width="750" ResizeMode="NoResize"
+        Title="{Binding Tittle}" Height="490" Width="760" ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <vm:NewUser_VM/>
@@ -20,7 +20,8 @@
                     IsCancel="True">
             </Button>
             <Button Content="Добавить" Height="30" Width="80" 
-                    HorizontalAlignment="Right" Margin="5">
+                    HorizontalAlignment="Right" Margin="5"
+                    Command="{Binding AddNewEmployeeCmd}">
             </Button>
         </UniformGrid>
         <Grid DockPanel.Dock="Left"
@@ -200,11 +201,20 @@
                       Grid.Column="0"
                       VerticalAlignment="Top"
                       Margin="5,24,3,3"
-                      ItemsSource="{Binding Source={x:Static serv:Collections.Posts}}"
+                      ItemsSource="{Binding Source={x:Static serv:Collections.PostsInfos}}"
                       SelectedItem="{Binding SelectedPost}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding NamePost}"/>
+                        <TextBlock Text="{Binding NamePost}">
+                            <TextBlock.ToolTip>
+                                <ToolTip>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="{Binding IdPost}"/>
+                                        <TextBlock Text="{Binding TypeControler}"/>                                        
+                                    </StackPanel>
+                                </ToolTip>
+                            </TextBlock.ToolTip>
+                                </TextBlock>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
@@ -244,15 +254,32 @@
                       Grid.Column="0"
                       VerticalAlignment="Top"
                       Margin="5,24,3,3"
-                      ItemsSource="{Binding Source={x:Static serv:Collections.Employees}}"
-                      SelectedItem="{Binding SelectedUser}"/>
+                      ItemsSource="{Binding Source={x:Static serv:Collections.ManagersDepartaments}}"
+                      SelectedItem="{Binding SelectedUser}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding NameDepartament}">
+                            <TextBlock.ToolTip>
+                                <ToolTip>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="{Binding LastName}"/>
+                                        <TextBlock Text="{Binding FirstName}"/>
+                                        <TextBlock Text="{Binding MiddleName}"/>
+                                    </StackPanel>
+                                </ToolTip>
+                            </TextBlock.ToolTip>
+                                </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+                      
             <TextBlock Grid.Row="5"
                        Grid.Column="1"
                        Text="Дата приема на работу:"
                        TextWrapping="Wrap"
                        VerticalAlignment="Top"
                        HorizontalAlignment="Left"
-                       Margin="5,5,0,0"
+                       Margin="5,5,0,3"
                        FontSize="16"
                        Foreground="DarkBlue"
                        FontFamily="Arial"
@@ -262,6 +289,35 @@
                         Width="165"
                         Margin="5,24,6,0"
                         SelectedDate="{Binding DateAdmission}"/>
+
+            <TextBlock Grid.Row="6"
+                       Grid.ColumnSpan="2"
+                       Text="Дата окончания договора:"
+                       TextWrapping="Wrap"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left"
+                       Margin="0,5,0,3"
+                       FontSize="16"
+                       Foreground="DarkBlue"
+                       FontFamily="Arial"
+                       FontWeight="Bold"/>
+            <TextBlock Grid.Row="6"
+                       Grid.ColumnSpan="2"
+                       Text="(для должности 'Директор')"
+                       TextWrapping="Wrap"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left"
+                       Margin="0,25,0,3"
+                       FontSize="13"
+                       Foreground="Red"
+                       FontFamily="Arial"
+                       FontWeight="Bold"/>
+            <DatePicker Grid.Column="1"
+                        Grid.Row="6"
+                        Width="165"
+                        Height="25"
+                        Margin="5,5,5,-10"
+                        SelectedDate="{Binding EndDateContract}" />
         </Grid>
     </DockPanel>
 </Window>

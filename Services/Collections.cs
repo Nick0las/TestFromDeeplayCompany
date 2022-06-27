@@ -14,11 +14,18 @@ namespace TestFromDeeplayCompany.Services
         
         // Коллекция, хранящая данные о существующих отделах
         public static ObservableCollection<Departament> Departaments { get; set; } = new ObservableCollection<Departament>();
-        
-        // Коллекция, хранящая данные о всех сотрудниках
-        public static ObservableCollection<Employee> Employees { get; set; } = new ObservableCollection<Employee>();
 
-        // Коллекция, хранящая данные о уникальной информации должностей
-        public static ObservableCollection<InfoPost> InfoPosts { get; set; } = new ObservableCollection<InfoPost>();
+        // Коллекция, хранящая данные о руководителях (таблица manager_personal)
+        public static ObservableCollection<Manager> Managers { get; set; } = new ObservableCollection<Manager>();
+
+        // Коллекция, хранящая данные о рабочем персонале (таблица WorkPersonal)
+        public static ObservableCollection<WorkPersonal> WorkPersonals { get; set; } = new ObservableCollection<WorkPersonal>();
+
+        // Коллекция, хранящая всю информацию о должностях (id, namePost, TypeControler)
+        public static ObservableCollection<PostsInfo> PostsInfos { get; set; } = new ObservableCollection<PostsInfo>();
+
+        // Коллекция, хрянаящая информацию об управляющих подразделениями (ФИО, должность, отдел)
+        public static ObservableCollection<DepartamentManager> ManagersDepartaments { get; set; } = new ObservableCollection<DepartamentManager>();
+        
     }
 }
