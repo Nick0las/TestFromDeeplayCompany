@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using TestFromDeeplayCompany.Commands;
 using TestFromDeeplayCompany.Models;
 using TestFromDeeplayCompany.Services;
 using TestFromDeeplayCompany.Services.Interfaces;
@@ -41,6 +43,35 @@ namespace TestFromDeeplayCompany.ViewModels
             get => _SelectedWorkPersonal;
             set => Set(ref _SelectedWorkPersonal, value);
         }
+
+        #endregion
+
+        #region Команды
+        // Команда редактирования управляющего персонала
+        /// <summary>Команда редактирования управляющего персонала</summary>
+        private ICommand _EditManagerPersonalCommand;
+        public ICommand EditManagerPersonalCommand => _EditManagerPersonalCommand ??= new LamdaCommand(OnEditWorkPersonalCommandExecuted, CanEditWorkPersonalCommandExecute);
+        private bool CanEditManagerPersonalCommandExecute(object p) => true;
+        private void OnEdiManagerPersonalCommandExecuted(object p)
+        {
+
+        }
+
+
+
+
+
+        // Команда редактирования рабочего персонала
+        /// <summary>Команда редактирования рабочего персонала</summary>
+        private ICommand _EditWorkPersonalCommand;
+        public ICommand EditWorkPersonalCommand => _EditWorkPersonalCommand ??= new LamdaCommand(OnEditWorkPersonalCommandExecuted, CanEditWorkPersonalCommandExecute);
+        private bool CanEditWorkPersonalCommandExecute(object p) => true;
+        private void OnEditWorkPersonalCommandExecuted(object p)
+        {
+            
+        }
+
+        
 
         #endregion
 
