@@ -26,6 +26,11 @@ namespace TestFromDeeplayCompany.Services
 
         // Коллекция, хрянаящая информацию об управляющих подразделениями (ФИО, должность, отдел)
         public static ObservableCollection<DepartamentManager> ManagersDepartaments { get; set; } = new ObservableCollection<DepartamentManager>();
-        
+
+        // Коллекция, хранящая информацию о управляющем персонале (ФИО, адрес, дата рождения, телефон, должность, отдел, тип контролера)
+        public static ObservableCollection<ManagerPersonal_Info> ManagersInfo { get; set; } = new ObservableCollection<ManagerPersonal_Info>();
+
+        // Коллекция, хранящая данные о рабочем персонале (ФИО,адрес, дата рождения, телефон, должность, id_руководителя,id_Профиля_Руководителя, ФИО_Руководителя, отдел)
+        public static ObservableCollection<WorkPersonal_Info> WorkPersonals_Info { get; set; } = new ObservableCollection<WorkPersonal_Info>();
     }
 }

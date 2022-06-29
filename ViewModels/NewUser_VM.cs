@@ -9,6 +9,7 @@ using TestFromDeeplayCompany.Services;
 using TestFromDeeplayCompany.Services.Interfaces;
 using TestFromDeeplayCompany.ViewModel.Base;
 
+
 namespace TestFromDeeplayCompany.ViewModels
 {
     internal class NewUser_VM : ViewModel_Base, IDownloadPostFromDb, IDownloadDepartament, IDownloadProfileFromDB
@@ -101,15 +102,18 @@ namespace TestFromDeeplayCompany.ViewModels
                         lastId = AddNewProfile();
                         date = AddNewDateContract();
                         AddNewManager(lastId, date);
+                        MessageBox.Show("Сотрудник добавлен!", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     break;
                 case 2 or 3 or 4:
                     lastId = AddNewProfile();
                     AddNewManager(lastId, date);
+                    MessageBox.Show("Сотрудник добавлен!", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Information);
                     break;
                 case 5:
                     lastId = AddNewProfile();
                     AddNewWorkPersonal(lastId);
+                    MessageBox.Show("Сотрудник добавлен!", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Information);
                     break;
             }
             Surname = "";
@@ -133,7 +137,9 @@ namespace TestFromDeeplayCompany.ViewModels
             Collections.PostsInfos.Clear();
             Collections.Posts.Clear();
             Collections.ManagersDepartaments.Clear();
+            Collections.Users.Clear();
             AddNewEmployeeCmd = new LamdaCommand(OnAddNewEmployeeCmdExecuted, CanAddNewEmployeeCmdExecute);
+            IDownloadProfileFromDB.ShowProfile(Collections.Users);
             IDownloadPostFromDb.ShowPost(Collections.Posts);
             IDownloadPostFromDb.ShowPostInfo(Collections.PostsInfos);
             IDownloadPostFromDb.ShowManagerDepartament(Collections.ManagersDepartaments);

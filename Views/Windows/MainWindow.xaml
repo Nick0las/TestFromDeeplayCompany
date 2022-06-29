@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:l="clr-namespace:TestFromDeeplayCompany"
+        xmlns:l="clr-namespace:TestFromDeeplayCompany.Views.Windows"
         xmlns:vm="clr-namespace:TestFromDeeplayCompany.ViewModels"
         xmlns:serv="clr-namespace:TestFromDeeplayCompany.Services"
         xmlns:cmd="clr-namespace:TestFromDeeplayCompany.Commands"
@@ -48,7 +48,11 @@
                     FontFamily="Arial"
                     FontWeight="Medium"
                     FontSize="14"
-                    Content="Изменить данные"/>
+                    Content="Изменить данные">
+                <Button.Command>
+                    <cmd:ShowInfoEmployees/>
+                </Button.Command>
+            </Button>
             <Button Grid.Column="0" 
                     Grid.Row="1"
                     Width="180"

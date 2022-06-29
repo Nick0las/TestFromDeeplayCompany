@@ -1,6 +1,10 @@
-﻿using TestFromDeeplayCompany.Services;
+﻿using System.Windows;
+using System.Windows.Input;
+using TestFromDeeplayCompany.Commands;
+using TestFromDeeplayCompany.Services;
 using TestFromDeeplayCompany.Services.Interfaces;
 using TestFromDeeplayCompany.ViewModel.Base;
+using TestFromDeeplayCompany.Views.Windows;
 
 namespace TestFromDeeplayCompany.ViewModels
 {
@@ -15,6 +19,11 @@ namespace TestFromDeeplayCompany.ViewModels
             set => Set(ref _Tittle, value);
         }
         #endregion
+
+        #region Команды
+        
+        #endregion
+
 
         public MainWindow_VM()
         {
